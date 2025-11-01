@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+httpx
+pydantic
+pydantic-settings
+python-dotenv
+supabase
+apscheduler
+loguru
+playwright
+playwright-stealth
+beautifulsoup4
+lxml
+requests
+facebook-business
+pandas

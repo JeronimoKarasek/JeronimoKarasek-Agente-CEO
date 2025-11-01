@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agente-CEO Dashboard</title>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gray-900 text-gray-100">
+  <div class="max-w-5xl mx-auto p-6 space-y-6">
+    <h1 class="text-2xl font-bold">Agente-CEO</h1>
+
+    <section id="auth" class="space-y-3">
+      <div>
+        <input id="email" type="email" placeholder="email" class="p-2 rounded bg-gray-800" />
+        <input id="password" type="password" placeholder="password" class="p-2 rounded bg-gray-800" />
+        <button id="login" class="px-3 py-2 bg-indigo-600 rounded">Login</button>
+        <button id="logout" class="px-3 py-2 bg-gray-700 rounded">Logout</button>
+      </div>
+      <div id="auth-info" class="text-sm text-gray-400"></div>
+    </section>
+
+    <section class="space-y-2">
+      <button id="btn-scout" class="px-3 py-2 bg-emerald-600 rounded">Run Scout</button>
+      <button id="btn-metrics" class="px-3 py-2 bg-blue-600 rounded">Get Metrics</button>
+      <pre id="output" class="bg-gray-800 p-3 rounded overflow-auto"></pre>
+    </section>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
