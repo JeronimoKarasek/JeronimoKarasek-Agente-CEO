@@ -14,3 +14,7 @@ lxml
 requests
 facebook-business
 pandas
+redis
+rq
+tenacity
+prometheus-client

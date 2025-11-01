@@ -1,5 +1,5 @@
 import { login, logout } from './auth.js';
-import { runScout, getMetrics } from './api.js';
+import { runScout, getMetrics, getQueue, getConfig, getAudit } from './api.js';
 
 const $ = (id)=>document.getElementById(id);
 
@@ -18,4 +18,17 @@ $("btn-scout").onclick = async () => {
 $("btn-metrics").onclick = async () => {
   try { const data = await getMetrics(); $("output").textContent = JSON.stringify(data, null, 2); }
   catch(e){ $("output").textContent = e.message; }
+};
+
+$("btn-queue").onclick = async () => {
+  try { const data = await getQueue(); $("admin").textContent = JSON.stringify(data, null, 2); }
+  catch(e){ $("admin").textContent = e.message; }
+};
+$("btn-config").onclick = async () => {
+  try { const data = await getConfig(); $("admin").textContent = JSON.stringify(data, null, 2); }
+  catch(e){ $("admin").textContent = e.message; }
+};
+$("btn-audit").onclick = async () => {
+  try { const data = await getAudit(); $("admin").textContent = JSON.stringify(data, null, 2); }
+  catch(e){ $("admin").textContent = e.message; }
 };
