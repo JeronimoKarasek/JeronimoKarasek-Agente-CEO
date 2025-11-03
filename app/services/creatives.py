@@ -2,7 +2,7 @@ from ..core.db import get_client
 from .preflight import score_preflight
 from ..core.idempotency import compute_idempotency_key
 
-async def generate_for_product(product_id: str, variants: int = 5):
+async def generate_for_product(product_id: str, variants: int = 5) -> list[dict]:
     # Placeholder generation with preflight scoring
     rows = []
     for i in range(variants):

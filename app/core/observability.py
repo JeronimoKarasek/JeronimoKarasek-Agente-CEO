@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from contextvars import ContextVar
 from loguru import logger
-from typing import Any, Dict
+from typing import Any
 from .db import get_client
 
 _corr_id: ContextVar[str | None] = ContextVar("corr_id", default=None)
@@ -20,7 +20,7 @@ def get_corr_id() -> str | None:
 class JsonLogSink:
     def __call__(self, message: Any) -> None:
         record = message.record
-        payload: Dict[str, Any] = {
+        payload: dict[str, Any] = {
             "timestamp": record["time"].isoformat(),
             "level": record["level"].name,
             "message": record["message"],
@@ -42,7 +42,7 @@ def setup_logging() -> None:
     logger.add(JsonLogSink())
 
 
-def write_audit(workspace_id: str, action: str, context: Dict[str, Any] | None = None) -> None:
+def write_audit(workspace_id: str, action: str, context: dict[str, Any] | None = None) -> None:
     try:
         get_client().table("audit_log").insert({
             "workspace_id": workspace_id,

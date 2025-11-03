@@ -1,8 +1,8 @@
 import time
-from typing import Dict, Tuple
+from typing import Tuple
 
 # simple in-memory rate limiter (per-process)
-_buckets: Dict[Tuple[str, str], Tuple[int, float]] = {}
+_buckets: dict[tuple[str, str], tuple[int, float]] = {}
 
 
 def allow(key: str, route: str, limit: int = 60, window_s: int = 60) -> bool:

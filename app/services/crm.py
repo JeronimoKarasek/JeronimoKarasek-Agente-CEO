@@ -1,6 +1,6 @@
 from ..core.db import get_client
 
-async def process_checkout_webhook(body: dict):
+async def process_checkout_webhook(body: dict) -> list[dict]:
     # Minimal example: store order
     order = {
         "external_id": body.get("id"),

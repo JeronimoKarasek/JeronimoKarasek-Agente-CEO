@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import time
-from typing import Optional
+from typing import Optional, Any
 
 import httpx
 from tenacity import retry, stop_after_attempt, wait_exponential, RetryError
@@ -38,7 +38,7 @@ class HttpClient:
         await self._client.aclose()
 
     @retry(wait=wait_exponential(multiplier=0.5, min=0.5, max=5), stop=stop_after_attempt(3))
-    async def request(self, method: str, url: str, **kwargs):
+    async def request(self, method: str, url: str, **kwargs: Any) -> httpx.Response:
         if not self._cb.allow():
             raise RuntimeError("circuit_open")
         try:

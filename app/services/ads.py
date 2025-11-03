@@ -6,7 +6,7 @@ from ..ads.abstractions import CampaignSpec
 from ..core.observability import write_audit
 from ..core.idempotency import compute_idempotency_key
 
-async def launch_campaign(name: str, platform: str = "meta", daily_budget: float = 50.0):
+async def launch_campaign(name: str, platform: str = "meta", daily_budget: float = 50.0) -> list[dict]:
     check_budget_guardrails(daily=daily_budget, weekly=daily_budget * 7)
     provider = MetaProvider() if platform == "meta" else TiktokProvider()
     cid = await provider.create_campaign(CampaignSpec(name=name, daily_budget=daily_budget))

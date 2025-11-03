@@ -19,5 +19,6 @@ async def process_publication_queue():
     # Prefer official APIs (not implemented), fallback to Playwright
     for item in queued:
         logger.info({"event": "publish_attempt", "id": item["id"], "platform": item.get("platform")})
+    ids = [item["id"] for item in queued]
     updated = get_client().table("publications").update({"status":"published"}).in_("id", ids).execute().data
     return {"updated": len(updated or [])}
